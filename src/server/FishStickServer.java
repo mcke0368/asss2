@@ -52,16 +52,16 @@ public class FishStickServer {
 			public void run(){	
 				ObjectOutputStream output = null;
 				ObjectInputStream input = null;
-				//String message = "";
 				Message mess;
-				System.out.println("Got a connection");
 				try {
 					SocketAddress remoteAddress = connection.getRemoteSocketAddress();
 					String remote = remoteAddress.toString();
+					System.out.println("Got a connection to: " + remote);
 					output = new ObjectOutputStream (connection.getOutputStream());
 					input = new ObjectInputStream( connection.getInputStream());               
 					do {
 						mess = (Message) input.readObject();
+						System.out.print("From: " + remote + " Command: ");
 						
 						switch(mess.getCommand()){
 						case "add": 	FishStick temp = new FishStick();
@@ -71,12 +71,15 @@ public class FishStickServer {
 										 */
 										daoImpl.insertFishStick(mess.getFishStick()); //Insert
 										temp = daoImpl.findByRecordNumber(mess.getFishStick().getRecordNumber()+"");
+										System.out.println("add FishStick: " + temp.getId() + ", " + temp.getRecordNumber() + ", " + temp.getOmega() + ", " + temp.getLambda() + ", " + temp.getUUID());
 										temp = daoImpl.findByUUID(temp.getUUID());
 										mess.setFishStick(temp);
 										mess.setCommand("command_worked");
 										break;
-						case "disconnect":	mess = null;
-											break;
+										
+						case "disconnect":	System.out.println("disconnect FishStick: null");
+            								mess = null;
+									break;
 						}
 
 						//message = (String) input.readObject();
@@ -96,16 +99,18 @@ public class FishStickServer {
 					} while (mess != null);
 					System.out.println(remote + " disconnected via request");
 		        } catch (IOException exception) {
-		            System.err.println(exception.getMessage());
-		            exception.printStackTrace();
+		            System.out.println("Communications link failure");
+//		            System.err.println(exception.getMessage());
+//		            exception.printStackTrace();
 		        }catch (ClassNotFoundException exception) {
 		            System.out.println(exception.getMessage());
 		            exception.printStackTrace();
 		        } catch (SQLException e) {
+		            System.out.println("Communications link failure");
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				} 
-				finally {
+			finally {
 				try{if(input != null){input.close();}}catch(IOException ex){
 					System.out.println(ex.getMessage());}
 				try{if(output != null){output.flush(); output.close();}}catch(IOException ex){

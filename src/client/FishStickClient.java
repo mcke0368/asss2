@@ -62,7 +62,8 @@ public class FishStickClient {
 			InetAddress myHost = Inet4Address.getLocalHost();
 			myHostName = myHost.getHostName();
 		} catch (UnknownHostException e1) {
-			e1.printStackTrace();
+		    	System.out.println("Communications link failure");
+			//e1.printStackTrace();
 		}
 		try {
 			connection = new Socket(InetAddress.getByName(serverName), portNum);
@@ -80,12 +81,13 @@ public class FishStickClient {
 				
 				case "command_worked":	fs = mess.getFishStick();
 										System.out.println();
-										System.out.print("Command: success Returned FishStick: "+fs.toString());
+										System.out.println("Command: success Returned FishStick: "+fs.toString());
 										System.out.println("Do you want to insert another fish stick?(y or n):");
 										if(br.readLine().equals("y")){
 											mess.setCommand("add");
 										}else{
 											mess.setCommand("disconnect");
+											System.out.println("Shutting down connection to server");
 											break;
 										}
 										
@@ -100,44 +102,30 @@ public class FishStickClient {
 								mess.setFishStick(fs);
 								break;
 										
-				case "command_failed":	System.out.println("Insert did not succed or similar");
+				case "command_failed":	System.out.println("Insert did not succeed or similar");
 										mess.setCommand("disconnect");
 										break;
-				}
-					
-				
-				
-				
-				
-				/**
-				 * Unneeded for now
-				 */
-				//message = br.readLine();
-				
-//				if (message == null || message.isEmpty()) {
-//					message = null; // do not append host name, send null to server to start disconnect.
-//				}
-//				else {
-//					message = myHostName + ": " + message;
-//				}
+				}// end of switch
 				output.writeObject(mess);
 				output.flush();
 				mess = (Message) input.readObject();
 				System.out.println(message);
 			} while (mess != null);
 		} catch (IOException exception) {
+			System.out.println("Server failed to preform requested operation");
+			exception.printStackTrace();
+		} catch (ClassNotFoundException exception) {
 			System.out.println(exception.getMessage());
 			exception.printStackTrace();
-		}catch (ClassNotFoundException exception) {
-			System.out.println(exception.getMessage());
-			exception.printStackTrace();
-		} 
-		finally{
+		} finally {
 			try{if(input != null){input.close();}}catch(IOException ex){
 				System.out.println(ex.getMessage());}
 			try{if(output != null){output.flush(); output.close();}}catch(IOException ex){
 				System.out.println(ex.getMessage());}
-			try{if(connection != null){connection.close();}}catch(IOException ex){
+			try{if(connection != null){
+			    System.out.println("Shutting down Connection to Server");
+			    connection.close();
+			}}catch(IOException ex){
 				System.out.println(ex.getMessage());}
 		}
 	}
