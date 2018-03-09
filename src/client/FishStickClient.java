@@ -37,6 +37,7 @@ public class FishStickClient {
 	
 	//Added FishStick Object to be transfererred to server via Message object
 	private FishStick fs = new FishStick();
+	
 
 	public static void main(String[] args) {
 		switch (args.length){
@@ -90,10 +91,11 @@ public class FishStickClient {
 				case "add": 	System.out.print("Enter data for new FishStick:\n");
 								System.out.print("Please enter record number: ");
 								fs.setRecordNumber(Integer.parseInt(br.readLine()));
-								System.out.print("\nPlease enter omega: ");
+								System.out.print("Please enter omega: ");
 								fs.setOmega(br.readLine());
-								System.out.print("\nPlease enter lambda: ");
+								System.out.print("Please enter lambda: ");
 								fs.setLambda(br.readLine());
+								fs.setUUID(UUID.randomUUID().toString());
 								mess.setFishStick(fs);
 								break;
 										
@@ -137,6 +139,10 @@ public class FishStickClient {
 			try{if(connection != null){connection.close();}}catch(IOException ex){
 				System.out.println(ex.getMessage());}
 		}
+	}
+	
+	public UUID generateUUID(){
+		return UUID.randomUUID();
 	}
 	
     /* Your code here */
