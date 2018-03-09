@@ -79,6 +79,7 @@ public class FishStickClient {
 									break;
 				
 				case "command_worked":	fs = mess.getFishStick();
+										System.out.println();
 										System.out.print("Command: success Returned FishStick: "+fs.toString());
 										System.out.println("Do you want to insert another fish stick?(y or n):");
 										if(br.readLine().equals("y")){
