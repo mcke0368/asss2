@@ -60,8 +60,4 @@ public interface FishStickDao {
 	 */
 	void insertFishStick(FishStick fishStick) throws SQLException;
 	
-	// List<FishStick> getAllFishSticks();
-    // FishStick getFishStickById(Integer fishStickID);
-	// void updateFishStick(FishStick fishStick);
-	// void deleteFishStick(FishStick fishStick);
 }
