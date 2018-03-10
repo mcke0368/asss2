@@ -27,7 +27,7 @@ public interface FishStickDao {
 	 * @author Stanley Pieda
 	 */
 	FishStick findByUUID(String uuid) throws SQLException;
-	
+
 	/**
 	 * 
 	 * @param recNum
@@ -35,7 +35,7 @@ public interface FishStickDao {
 	 * @throws SQLException
 	 */
 	FishStick findByRecordNumber(String recNum) throws SQLException;
-	
+
 	/**
 	 * 
 	 * @param omega
@@ -43,7 +43,7 @@ public interface FishStickDao {
 	 * @throws SQLException
 	 */
 	FishStick findByOmega(String omega) throws SQLException;
-	
+
 	/**
 	 * 
 	 * @param lambda
@@ -51,7 +51,7 @@ public interface FishStickDao {
 	 * @throws SQLException
 	 */
 	FishStick findByLambda(String lambda) throws SQLException;
-	
+
 	/**
 	 * Should accept a FishTick object reference, insert the encapsulated data into database.
 	 * @param fishStick with data for record insertion
@@ -59,5 +59,5 @@ public interface FishStickDao {
 	 * @author Stanley Pieda
 	 */
 	void insertFishStick(FishStick fishStick) throws SQLException;
-	
+
 }

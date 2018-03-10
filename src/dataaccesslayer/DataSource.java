@@ -20,30 +20,30 @@ import java.sql.SQLException;
  *
  */
 public class DataSource {
-    private Connection con = null;
-    private final String connectionString = "jdbc:mysql://localhost/assignment2";
-    private final String username = "assignment2";
-    private final String password = "password";
+	private Connection con = null;
+	private final String connectionString = "jdbc:mysql://localhost/assignment2";
+	private final String username = "assignment2";
+	private final String password = "password";
 
-    /**
-     * Returns a reference to a connection object, configured to communicate with a
-     * MySQL database. Note: It is your responsibility to close the connection when
-     * done with it.
-     * 
-     * @return A connection to the configured MySQL database
-     * @throws SQLException
-     */
-    public Connection getConnection() throws SQLException {
-	try {
-	    if (con != null) {
-		System.out.println("Cannot create new connection, one exists already");
-	    } else {
-		con = DriverManager.getConnection(connectionString, username, password);
-	    }
-	} catch (SQLException ex) {
-	    System.out.println(ex.getMessage());
-	    throw ex;
+	/**
+	 * Returns a reference to a connection object, configured to communicate with a
+	 * MySQL database. Note: It is your responsibility to close the connection when
+	 * done with it.
+	 * 
+	 * @return A connection to the configured MySQL database
+	 * @throws SQLException
+	 */
+	public Connection getConnection() throws SQLException {
+		try {
+			if (con != null) {
+				System.out.println("Cannot create new connection, one exists already");
+			} else {
+				con = DriverManager.getConnection(connectionString, username, password);
+			}
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			throw ex;
+		}
+		return con;
 	}
-	return con;
-    }
 }

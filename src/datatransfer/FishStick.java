@@ -20,25 +20,25 @@ import java.io.Serializable;
 public class FishStick implements Serializable{
 	/** Explicit serialVersionUID to avoid generating one automatically */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** ID value for database */
 	private Integer id;
-	
+
 	/** recordNumber for database, originally matched a dataset file line number */
 	private int recordNumber;
-	
+
 	/** omega field */
 	private String omega;
-	
+
 	/** lambda field */
 	private String lambda;
-	
+
 	/** uuid field, contains UUID as String */
 	private String uuid;
-	
+
 	/** see lab hand-out notes from assignment 1 */
 	private boolean isLastFishStick;
-	
+
 	/**
 	 * Default constructor, sets id and recordNumber to zero, omega, lambda, uuid to empty Strings
 	 * @author Stanley Pieda
@@ -46,7 +46,7 @@ public class FishStick implements Serializable{
 	public FishStick() {
 		this(0,0,"","","");
 	}
-	
+
 	/**
 	 * Telescoping constructor.
 	 * @param id The id as Integer
@@ -63,7 +63,7 @@ public class FishStick implements Serializable{
 		this.lambda = lambda;
 		this.uuid = uuid;
 	}
-	
+
 	/** Getter for id */
 	public Integer getId() {
 		return id;
@@ -112,7 +112,7 @@ public class FishStick implements Serializable{
 	public void setLastFishStick(boolean isLastFishStick) {
 		this.isLastFishStick = isLastFishStick;
 	}
-	
+
 	/** Overridden toString() to provide formatting for console output. */
 	@Override
 	public String toString() {

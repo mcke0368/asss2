@@ -4,7 +4,7 @@
  * Date: Feb, 2018
  * Description:  
  *
-*/
+ */
 package datatransfer;
 
 import java.io.Serializable;
@@ -17,13 +17,13 @@ public class Message implements Serializable{
 
 	/** The serial version UID. */
 	private long serialVersionUID;
-	
+
 	/** The command. */
 	private String command;
-	
+
 	/** The fish stick. */
 	private FishStick fishStick;
-	
+
 	/**
 	 * Instantiates a new message.
 	 *
@@ -32,7 +32,7 @@ public class Message implements Serializable{
 	public Message(String command){
 		this.command = command;
 	}
-	
+
 	/**
 	 * Instantiates a new message.
 	 *
@@ -43,7 +43,7 @@ public class Message implements Serializable{
 		this.command = command;
 		this.fishStick = fishStick;
 	}
-	
+
 	/**
 	 * Gets the command.
 	 *
@@ -52,7 +52,7 @@ public class Message implements Serializable{
 	public String getCommand(){
 		return command;
 	}
-	
+
 	/**
 	 * Sets the command.
 	 *
@@ -61,7 +61,7 @@ public class Message implements Serializable{
 	public void setCommand(String command){
 		this.command = command;
 	}
-	
+
 	/**
 	 * Gets the fish stick.
 	 *
@@ -70,7 +70,7 @@ public class Message implements Serializable{
 	public FishStick getFishStick(){
 		return fishStick;
 	}
-	
+
 	/**
 	 * Sets the fish stick.
 	 *
@@ -79,5 +79,5 @@ public class Message implements Serializable{
 	public void setFishStick(FishStick fishStick){
 		this.fishStick = fishStick;
 	}
-	
+
 }
