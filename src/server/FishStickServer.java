@@ -24,9 +24,8 @@ import dataaccesslayer.FishStickDao;
 import dataaccesslayer.FishStickDaoImpl;
 
 /**
- * Need programming comments with correct author name throughout this class
  * 
- * @author xyz abc
+ * @author Joel Schmuland and Jordan Mckenzie
  */
 public class FishStickServer {
 
@@ -40,6 +39,8 @@ public class FishStickServer {
 	FishStickDaoImpl daoImpl = new FishStickDaoImpl();
 
 	public static void main(String[] args) {
+		
+		// Checks for argument that sets the port # for server to run at
 		if (args.length > 0) {
 			(new FishStickServer(Integer.parseInt(args[0]))).runServer();
 		} else {
@@ -47,52 +48,72 @@ public class FishStickServer {
 		}
 	}
 
+	/**
+	 * Constructor that sets the port number on which the server will run
+	 * @param portNum The port number on which the server will run
+	 */
 	public FishStickServer(int portNum) {
 		this.portNum = portNum;
 	}
 
+	/**
+	 * Sets up the server to receive FishStick data and insert it into the database
+	 * as well as send back message objects to client
+	 * @param connection The socket connection of the server
+	 */
 	public void talkToClient(final Socket connection) {
+		
+		// Run new thread for each client that connects
 		threadExecutor.execute(new Runnable() {
 			public void run() {
-				ObjectOutputStream output = null;
-				ObjectInputStream input = null;
-				Message mess;
+				ObjectOutputStream output = null; // The ouptut stream for the server
+				ObjectInputStream input = null; // The input stream for the server
+				Message mess; // Message object to recieve and transfer the data between client and server
+				
 				try {
+					// receive connection from client and print out details
 					SocketAddress remoteAddress = connection.getRemoteSocketAddress();
 					String remote = remoteAddress.toString();
 					System.out.println("Got a connection to: " + remote);
+					
+					// Set up streams to and from client
 					output = new ObjectOutputStream(connection.getOutputStream());
 					input = new ObjectInputStream(connection.getInputStream());
+					
 					do {
+						// Set message object to data from client
 						mess = (Message) input.readObject();
 						System.out.print("From: " + remote + " Command: ");
 
+						// Based on command from message object, execute code
 						switch (mess.getCommand()) {
+
+						// Insert FishStick object into the database and set new message command
 						case "add":
 							FishStick temp = new FishStick();
-							/*
-							 * insert Fish stick into DB and send back comand_worked with Fish Stick to
-							 * client
-							 */
-							daoImpl.insertFishStick(mess.getFishStick()); // Insert
-							temp = daoImpl.findByRecordNumber(mess.getFishStick().getRecordNumber() + "");
+							daoImpl.insertFishStick(mess.getFishStick()); // Insert FishStick into Database
+							temp = daoImpl.findByRecordNumber(mess.getFishStick().getRecordNumber() + ""); // Retreive FishStick from database based on record number
 							System.out.println("add FishStick: " + temp.getId() + ", " + temp.getRecordNumber() + ", "
-									+ temp.getOmega() + ", " + temp.getLambda() + ", " + temp.getUUID());
-							temp = daoImpl.findByUUID(temp.getUUID());
-							mess.setFishStick(temp);
-							mess.setCommand("command_worked");
-							break;
+									+ temp.getOmega() + ", " + temp.getLambda() + ", " + temp.getUUID()); // Print out FishStick data to console
+							temp = daoImpl.findByUUID(temp.getUUID()); // Get UUID from FishStick
+							mess.setFishStick(temp); // Set Fishstick with the UUID to message object
+							mess.setCommand("command_worked"); // successful command
+							break; // break from loop
 
+							// Send back disconnect message to client for disconnection
 						case "disconnect":
 							System.out.println("disconnect FishStick: null");
 							mess = null;
 							break;
 						}
 
+						// Write the message object to ouput stream and flush it
 						output.writeObject(mess);
 						output.flush();
-					} while (mess != null);
+					} while (mess != null); // End loop if message object is null
 					System.out.println(remote + " disconnected via request");
+					
+					// Catch errors and print out corresponding messages
 				} catch (IOException exception) {
 					System.out.println("Communications link failure");
 				} catch (ClassNotFoundException exception) {
@@ -100,16 +121,18 @@ public class FishStickServer {
 					exception.printStackTrace();
 				} catch (SQLException e) {
 					System.out.println("Communications link failure");
+					
+					// Close all resources
 				} finally {
 					try {
 						if (input != null) {
-							input.close();
+							input.close(); // Close input stream
 						}
 					} catch (IOException ex) {
 						System.out.println(ex.getMessage());
 					}
 					try {
-						if (output != null) {
+						if (output != null) { // Flush and close output stream
 							output.flush();
 							output.close();
 						}
@@ -117,7 +140,7 @@ public class FishStickServer {
 						System.out.println(ex.getMessage());
 					}
 					try {
-						if (connection != null) {
+						if (connection != null) { // Close the connection to client
 							connection.close();
 						}
 					} catch (IOException ex) {
@@ -128,6 +151,9 @@ public class FishStickServer {
 		});
 	}// talk to client
 
+	/**
+	 * Set up a server socket that listens for connection on specified port
+	 */
 	public void runServer() {
 		try {
 			server = new ServerSocket(portNum);
@@ -135,10 +161,10 @@ public class FishStickServer {
 			e.printStackTrace();
 		}
 		System.out.println("Listenting for connections...");
-		while (true) {
+		while (true) { // Loop while listening for connections
 			try {
 				connection = server.accept();
-				talkToClient(connection);
+				talkToClient(connection); // When connection comes in, call talktoclient method
 			} catch (IOException exception) {
 				exception.printStackTrace();
 			}

@@ -29,25 +29,28 @@ public interface FishStickDao {
 	FishStick findByUUID(String uuid) throws SQLException;
 
 	/**
-	 * 
-	 * @param recNum
-	 * @return
+	 * Should return a reference to a Fishstick object with 
+	 * the required data from the database, based on lookup using a record number as string
+	 * @param recNum String based on record number
+	 * @return FishStick transfer object, or null if no match based on record number found
 	 * @throws SQLException
 	 */
 	FishStick findByRecordNumber(String recNum) throws SQLException;
 
 	/**
-	 * 
-	 * @param omega
-	 * @return
+	 * Should return a reference to a Fishstick object with 
+	 * the required data from the database, based on lookup using a omega string as string
+	 * @param omega string based on omega 
+	 * @return FishStick transfer object, or null if no match based on omega found
 	 * @throws SQLException
 	 */
 	FishStick findByOmega(String omega) throws SQLException;
 
 	/**
-	 * 
-	 * @param lambda
-	 * @return
+	 * Should return a reference to a Fishstick object with 
+	 * the required data from the database, based on lookup using a lambda string as string
+	 * @param lambda string based on lambda
+	 * @return FishStick transfer object, or null if no match based on lambda found
 	 * @throws SQLException
 	 */
 	FishStick findByLambda(String lambda) throws SQLException;

@@ -2,7 +2,7 @@
  * File: Message.java
  * Author: Joel Schmuland and Jordan Mckenzie, based off of class example by Stanley Pieda.
  * Date: Feb, 2018
- * Description:  
+ * Description:  Message object that is transferred between client and server whcihc carries Fishstick and message data
  *
  */
 package datatransfer;

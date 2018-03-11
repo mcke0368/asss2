@@ -100,23 +100,26 @@ public class FishStickClient {
 			System.out.println("Communications link failure");
 		}
 
+		// Connect to Server
 		try {
 			connection = new Socket(InetAddress.getByName(serverName), portNum);
 			output = new ObjectOutputStream(connection.getOutputStream());
 			input = new ObjectInputStream(connection.getInputStream());
 			do {
 
+				// Check what the command from message object received from server is
+				// execute appropriate code 
 				switch (mess.getCommand()) {
 
-				case "disconnect":
+				case "disconnect": //Set message object to null
 					mess = null;
 					break;
 
-				case "command_worked":
+				case "command_worked": // print out fishStick object
 					fs = mess.getFishStick();
 					System.out.println();
 					System.out.println("Command: success Returned FishStick: " + fs.toString());
-					System.out.println("Do you want to insert another fish stick?(y or n):");
+					System.out.println("Do you want to insert another fish stick?(y or n):"); // Ask to insert again
 					if (br.readLine().equals("y")) {
 						mess.setCommand("add");
 					} else {
@@ -124,7 +127,7 @@ public class FishStickClient {
 						break;
 					}
 
-				case "add":
+				case "add": // Prompt  user to enter the required data for FishStick and set FishStick for message object
 					System.out.print("Enter data for new FishStick:\n");
 					System.out.print("Please enter record number: ");
 					fs.setRecordNumber(Integer.parseInt(br.readLine()));
@@ -136,34 +139,36 @@ public class FishStickClient {
 					mess.setFishStick(fs);
 					break;
 
-				case "command_failed":
+				case "command_failed": // Print 'error' message and disconnect gracefully
 					System.out.println("Insert did not succeed or similar");
 					mess.setCommand("disconnect");
 					break;
 				}// end of switch
 
+				// Write message object to output stream 
 				output.writeObject(mess);
-				output.flush();
-				mess = (Message) input.readObject();
+				output.flush(); // Flush ouput stream
+				mess = (Message) input.readObject(); // Read input stream and cast input to Message object
 				System.out.println(message);
 
-			} while (mess != null);
-
+			} while (mess != null); // End loop if message is null (Disconnect)
 		} catch (IOException exception) {
 			System.out.println("Server failed to preform requested operation");
 		} catch (ClassNotFoundException exception) {
 			System.out.println(exception.getMessage());
 			exception.printStackTrace();
+			
+			// Close all resources
 		} finally {
 			try {
 				if (input != null) {
-					input.close();
+					input.close(); // Close input stream if stream is null (empty)
 				}
 			} catch (IOException ex) {
 				System.out.println(ex.getMessage());
 			}
 			try {
-				if (output != null) {
+				if (output != null) { // Flush and close output stream
 					output.flush();
 					output.close();
 				}
@@ -173,7 +178,7 @@ public class FishStickClient {
 			try {
 				if (connection != null) {
 					System.out.println("Shutting down connection to server.");
-					connection.close();
+					connection.close(); // Close connection to server
 				}
 			} catch (IOException ex) {
 				System.out.println(ex.getMessage());
