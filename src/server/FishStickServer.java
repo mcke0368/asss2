@@ -50,6 +50,7 @@ public class FishStickServer {
 
 	/**
 	 * Constructor that sets the port number on which the server will run
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * @param portNum The port number on which the server will run
 	 */
 	public FishStickServer(int portNum) {
@@ -59,6 +60,7 @@ public class FishStickServer {
 	/**
 	 * Sets up the server to receive FishStick data and insert it into the database
 	 * as well as send back message objects to client
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * @param connection The socket connection of the server
 	 */
 	public void talkToClient(final Socket connection) {
@@ -153,6 +155,7 @@ public class FishStickServer {
 
 	/**
 	 * Set up a server socket that listens for connection on specified port
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public void runServer() {
 		try {
