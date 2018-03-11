@@ -15,6 +15,7 @@ import datatransfer.FishStick;
 /**
  * Partially complete interface for DAO design pattern.
  * Has one insert method, and one find-by-UUID method.
+ * @author Joel Schmuland and Jordan Mckenzie
  * @author Stanley Pieda
  */
 public interface FishStickDao {
@@ -25,6 +26,7 @@ public interface FishStickDao {
 	 * @return FishStick transfer object, or null if no match based on uuid found
 	 * @throws SQLException
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	FishStick findByUUID(String uuid) throws SQLException;
 
@@ -34,6 +36,7 @@ public interface FishStickDao {
 	 * @param recNum String based on record number
 	 * @return FishStick transfer object, or null if no match based on record number found
 	 * @throws SQLException
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	FishStick findByRecordNumber(String recNum) throws SQLException;
 
@@ -43,6 +46,7 @@ public interface FishStickDao {
 	 * @param omega string based on omega 
 	 * @return FishStick transfer object, or null if no match based on omega found
 	 * @throws SQLException
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	FishStick findByOmega(String omega) throws SQLException;
 
@@ -52,6 +56,7 @@ public interface FishStickDao {
 	 * @param lambda string based on lambda
 	 * @return FishStick transfer object, or null if no match based on lambda found
 	 * @throws SQLException
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	FishStick findByLambda(String lambda) throws SQLException;
 
@@ -60,6 +65,7 @@ public interface FishStickDao {
 	 * @param fishStick with data for record insertion
 	 * @throws SQLException
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	void insertFishStick(FishStick fishStick) throws SQLException;
 

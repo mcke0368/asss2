@@ -42,6 +42,7 @@ public class FishStick implements Serializable{
 	/**
 	 * Default constructor, sets id and recordNumber to zero, omega, lambda, uuid to empty Strings
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public FishStick() {
 		this(0,0,"","","");
@@ -55,6 +56,7 @@ public class FishStick implements Serializable{
 	 * @param lambda The lambda as String
 	 * @param uuid The UUID as String
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public FishStick(Integer id, int recordNumber, String omega, String lambda, String uuid) {
 		this.id = id;
@@ -64,56 +66,69 @@ public class FishStick implements Serializable{
 		this.uuid = uuid;
 	}
 
-	/** Getter for id */
+	/** Getter for id 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public Integer getId() {
 		return id;
 	}
-	/** Setter for id */
+	/** Setter for id 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	/** Getter for recordNumber */
+	/** Getter for recordNumber 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public int getRecordNumber() {
 		return recordNumber;
 	}
-	/** Setter for recordNumber */
+	/** Setter for recordNumber 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setRecordNumber(int recordNumber) {
 		this.recordNumber = recordNumber;
 	}
-	/** Getter for omega */
+	/** Getter for omega 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public String getOmega() {
 		return omega;
 	}
-	/** Setter for omega */
+	/** Setter for omega 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setOmega(String omega) {
 		this.omega = omega;
 	}
-	/** Getter for lambda */
+	/** Getter for lambda 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public String getLambda() {
 		return lambda;
 	}
-	/** Setter for lambda */
+	/** Setter for lambda 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setLambda(String lambda) {
 		this.lambda = lambda;
 	}
-	/** Getter for uuid */
+	/** Getter for uuid 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public String getUUID() {
 		return uuid;
 	}
-	/** Setter for uuid */
+	/** Setter for uuid 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setUUID(String uuid) {
 		this.uuid = uuid;
 	}
-	/** Getter for isLastFishStick, can be used by consumer to detect end of buffer */
+	/** Getter for isLastFishStick, can be used by consumer to detect end of buffer 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public boolean isLastFishStick() {
 		return isLastFishStick;
 	}
-	/** Setter for isLastFishStick, can be used by producer when placing last FishStick into buffer */
+	/** Setter for isLastFishStick, can be used by producer when placing last FishStick into buffer 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	public void setLastFishStick(boolean isLastFishStick) {
 		this.isLastFishStick = isLastFishStick;
 	}
 
-	/** Overridden toString() to provide formatting for console output. */
+	/** Overridden toString() to provide formatting for console output. 
+	 * @author Joel Schmuland and Jordan Mckenzie*/
 	@Override
 	public String toString() {
 		return String.format("%d, %d, %s, %s, %s", id, recordNumber, omega, lambda, uuid);

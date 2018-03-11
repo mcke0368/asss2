@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Need programming comments with correct author name throughout this class.
  *
- * @author xyz abc
+ * @author Joel Schmuland and Jordan Mckenzie
  */
 public class FishStickClient {
 
@@ -59,7 +59,7 @@ public class FishStickClient {
 
 	/**
 	 * The main method.
-	 *
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
@@ -78,6 +78,7 @@ public class FishStickClient {
 
 	/**
 	 * Instantiates a new fish stick client.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @param serverName the server name
 	 * @param portNum the port num
@@ -89,6 +90,7 @@ public class FishStickClient {
 
 	/**
 	 * Run client.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public void runClient() {
 		String myHostName = null;
@@ -188,6 +190,7 @@ public class FishStickClient {
 
 	/**
 	 * Generate UUID.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @return the uuid
 	 */

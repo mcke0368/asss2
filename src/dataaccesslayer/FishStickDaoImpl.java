@@ -36,6 +36,7 @@ public class FishStickDaoImpl implements FishStickDao {
 	 * database, based on lookup using a UUID as String.
 	 *
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * @param uuid            String based UUID
 	 * @return FishStick transfer object, or null if no match based on uuid found
 	 * @throws SQLException the SQL exception
@@ -95,6 +96,7 @@ public class FishStickDaoImpl implements FishStickDao {
 	 */
 	/*
 	 * Set method for the rec Num. Need to do this for all columns
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public FishStick findByRecordNumber(String recNum) throws SQLException {
 		Connection con = null;
@@ -151,6 +153,7 @@ public class FishStickDaoImpl implements FishStickDao {
 
 	/* (non-Javadoc)
 	 * @see dataaccesslayer.FishStickDao#findByOmega(java.lang.String)
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public FishStick findByOmega(String omega) throws SQLException {
 		Connection con = null;
@@ -207,6 +210,7 @@ public class FishStickDaoImpl implements FishStickDao {
 
 	/* (non-Javadoc)
 	 * @see dataaccesslayer.FishStickDao#findByLambda(java.lang.String)
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 */
 	public FishStick findByLambda(String lambda) throws SQLException {
 		Connection con = null;
@@ -266,6 +270,7 @@ public class FishStickDaoImpl implements FishStickDao {
 	 * database.
 	 *
 	 * @author Stanley Pieda
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * @param fishStick            with data for record insertion
 	 * @throws SQLException the SQL exception
 	 */

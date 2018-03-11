@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 /**
  * The Class Message.
+	 * @author Joel Schmuland and Jordan Mckenzie
  */
 public class Message implements Serializable{
 
@@ -26,6 +27,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Instantiates a new message.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @param command the command
 	 */
@@ -35,6 +37,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Instantiates a new message.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @param command the command
 	 * @param fishStick the fish stick
@@ -46,6 +49,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Gets the command.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @return the command
 	 */
@@ -55,6 +59,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Sets the command.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @param command the new command
 	 */
@@ -64,6 +69,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Gets the fish stick.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @return the fish stick
 	 */
@@ -73,6 +79,7 @@ public class Message implements Serializable{
 
 	/**
 	 * Sets the fish stick.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 *
 	 * @param fishStick the new fish stick
 	 */

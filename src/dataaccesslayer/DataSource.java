@@ -17,6 +17,7 @@ import java.sql.SQLException;
  * responsibility to close the connection.
  * 
  * @author Stanley Pieda
+ * @author Joel Schmuland and Jordan Mckenzie
  *
  */
 public class DataSource {
@@ -29,6 +30,7 @@ public class DataSource {
 	 * Returns a reference to a connection object, configured to communicate with a
 	 * MySQL database. Note: It is your responsibility to close the connection when
 	 * done with it.
+	 * @author Joel Schmuland and Jordan Mckenzie
 	 * 
 	 * @return A connection to the configured MySQL database
 	 * @throws SQLException
